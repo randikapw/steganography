@@ -61,7 +61,8 @@ def encrypt_and_hash_secret_message(secret_text):
     # Base64 encode the hashed secret for easier storage
     hashed_secret_base64 = base64.b64encode(hashed_secret).decode('utf-8')
     
-    return encrypted_secret, hashed_secret_base64, key
+    # return encrypted_secret, hashed_secret_base64, key
+    return hashed_secret_base64
 
 #Encode the encrypted secret text in the cover text
 def encode(hashed_secret_base64, open_text):
@@ -89,7 +90,7 @@ def main():
             continue 
     secret_text = input("Enter the secret message to hide: ")
 
-    steganographed_text = encode(hashed_secret_base64, open_text)
+    steganographed_text = encode(encrypt_and_hash_secret_message(secret_text), open_text)
 
   # Print the steganographed text
     print("Steganographed text:", steganographed_text)
