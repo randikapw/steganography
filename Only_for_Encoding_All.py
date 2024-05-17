@@ -73,6 +73,26 @@ def encode(hashed_secret_base64, open_text):
     for b in bin_text:
         encoded_text += char_list[bin_list.index(b)]
         return encoded_text
+#Decode the stego text when the user enters it. This should be stored in the variable stego_text
+def decode(stego_text):
+	bin_text = ""
+	for w in open_text:
+		if w in char_list:
+			bin_text += bin_list[char_list.index(w)]
+	bin_val = bin_text.split()
+	secret_text = ""
+	for b in bin_val:
+		secret_text += chr(int(b, 2))
+	return secret_text
+#Decrypt the decoded hashed stego text to get the secret text. How to get the key???
+def decrypt_stego_text(secret_text, key):
+        #base64 decode the encoded secret
+        hashed_secret = base64.b64decode(secret_text)
+        # Initialize AES cipher in ECB mode with the provided key
+        cipher = AES.new(key, AES.MODE_ECB)
+        # Decrypt the secret message
+        decrypted_secret = unpad(cipher.decrypt(hashed_secret), AES.block_size)
+        return decrypted_secret.decode('utf-8')
 
 def main():
     print("Welcome to Sinhala Steganography!")
@@ -90,10 +110,18 @@ def main():
             continue 
     secret_text = input("Enter the secret message to hide: ")
 
-    steganographed_text = encode(encrypt_and_hash_secret_message(secret_text), open_text)
-
+    steganographed_text = encode(encrypt_and_hash_secret_message(secret_text), open_text) 
+        
   # Print the steganographed text
     print("Steganographed text:", steganographed_text)
+        
+#Decoding
+#Input the stego text
+   print("Enter the steganographed text: ")
+   output_secret = decrypt_stego_text(decode(stego_text), secret_text, key)
+
+#Print the decoded and decrypted secret
+   print("Decoded Secret: ", output_secret)
 
 if __name__ == "__main__":
   main()
