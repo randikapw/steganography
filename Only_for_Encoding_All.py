@@ -29,6 +29,7 @@ possible_zero_width_chars = [
 bin_list = [" ","0","1"]
 # char_list = ["\u2060", "\u200B", "\u200C"]
 char_list = ["A", "B", "C"]
+key = get_random_bytes(32)
 
 # Detect cover text as Sinhala
 def detect_sinhala_text(open_text, threshold=0.5):
@@ -45,7 +46,7 @@ def detect_sinhala_text(open_text, threshold=0.5):
 # Encrypt and hash the secret message using a random key
 def encrypt_and_hash_secret_message(secret_text):
     # Generate a random 256-bit (32 bytes) AES key
-    key = get_random_bytes(32)
+    # key = get_random_bytes(32)
 
     # Initialize AES cipher in ECB mode with the generated key
     cipher = AES.new(key, AES.MODE_ECB)
@@ -120,7 +121,10 @@ def main():
 #Decoding
 #Input the stego text
     print("Enter the steganographed text: ")
-    output_secret = decrypt_stego_text(decode(stego_text), secret_text, key)
+    separator_index = steganographed_text.rfind("p")
+    stego_text = steganographed_text[separator_index + 1:]
+     
+    output_secret = decrypt_stego_text(decode(stego_text), key)
 
 #Print the decoded and decrypted secret
     print("Decoded Secret: ", output_secret)
