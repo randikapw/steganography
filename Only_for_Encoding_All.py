@@ -79,13 +79,14 @@ def encode(hashed_secret_base64, open_text):
 #Decode the stego text when the user enters it. This should be stored in the variable stego_text
 def decode(stego_text):
 	bin_text = ""
-	for w in open_text:
+	for w in stego_text:
 		if w in char_list:
 			bin_text += bin_list[char_list.index(w)]
 	bin_val = bin_text.split()
 	secret_text = ""
 	for b in bin_val:
 		secret_text += chr(int(b, 2))
+	print("Secret Text: ", secret_text)
 	return secret_text
 #Decrypt the decoded hashed stego text to get the secret text. How to get the key???
 def decrypt_stego_text(secret_text, key):
@@ -123,7 +124,7 @@ def main():
     print("Enter the steganographed text: ")
     separator_index = steganographed_text.rfind("\u2063")
     stego_text = steganographed_text[separator_index + 1:]
-     
+    print("Stego Text:", stego_text) 
     output_secret = decrypt_stego_text(decode(stego_text), key)
 
 #Print the decoded and decrypted secret
