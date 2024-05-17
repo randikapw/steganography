@@ -68,7 +68,7 @@ def encrypt_and_hash_secret_message(secret_text):
 
 #Encode the encrypted secret text in the cover text
 def encode(hashed_secret_base64, open_text):
-    encoded_text = open_text
+    encoded_text = open_text + "\u2063"
     bin_text = ' '. join(format(ord(x), 'b') for x in hashed_secret_base64)
     print("bin text is:", bin_text)
     # char_list = random.sample(possible_zero_width_chars, len(bin_list))
@@ -121,7 +121,7 @@ def main():
 #Decoding
 #Input the stego text
     print("Enter the steganographed text: ")
-    separator_index = steganographed_text.rfind("p")
+    separator_index = steganographed_text.rfind("\u2063")
     stego_text = steganographed_text[separator_index + 1:]
      
     output_secret = decrypt_stego_text(decode(stego_text), key)
