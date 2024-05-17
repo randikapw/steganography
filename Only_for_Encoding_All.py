@@ -69,9 +69,11 @@ def encrypt_and_hash_secret_message(secret_text):
 def encode(hashed_secret_base64, open_text):
     encoded_text = open_text
     bin_text = ' '. join(format(ord(x), 'b') for x in hashed_secret_base64)
+    print("bin text is:", bin_text)
     # char_list = random.sample(possible_zero_width_chars, len(bin_list))
     for b in bin_text:
         encoded_text += char_list[bin_list.index(b)]
+	print("Encoded Text is:", encoded_text)   
         return encoded_text
 #Decode the stego text when the user enters it. This should be stored in the variable stego_text
 def decode(stego_text):
@@ -117,11 +119,11 @@ def main():
         
 #Decoding
 #Input the stego text
-   print("Enter the steganographed text: ")
-   output_secret = decrypt_stego_text(decode(stego_text), secret_text, key)
+    print("Enter the steganographed text: ")
+    output_secret = decrypt_stego_text(decode(stego_text), secret_text, key)
 
 #Print the decoded and decrypted secret
-   print("Decoded Secret: ", output_secret)
+    print("Decoded Secret: ", output_secret)
 
 if __name__ == "__main__":
   main()
