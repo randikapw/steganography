@@ -27,7 +27,8 @@ possible_zero_width_chars = [
 ]
 
 bin_list = [" ","0","1"]
-char_list = ["\u2060", "\u200B", "\u200C"]
+# char_list = ["\u2060", "\u200B", "\u200C"]
+char_list = ["A", "B", "C"]
 
 # Detect cover text as Sinhala
 def detect_sinhala_text(open_text, threshold=0.5):
@@ -66,10 +67,9 @@ def encrypt_and_hash_secret_message(secret_text):
 
 #Encode the encrypted secret text in the cover text
 def encode(hashed_secret_base64, open_text):
-    bin_text = ""
     encoded_text = open_text
-    bin = ' '. join(format(ord(x), 'b') for x in hashed_secret_base64)
-    char_list = random.sample(possible_zero_width_chars, len(bin_list))
+    bin_text = ' '. join(format(ord(x), 'b') for x in hashed_secret_base64)
+    # char_list = random.sample(possible_zero_width_chars, len(bin_list))
     for b in bin_text:
         encoded_text += char_list[bin_list.index(b)]
         return encoded_text
