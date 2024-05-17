@@ -74,8 +74,8 @@ def encode(hashed_secret_base64, open_text):
     # char_list = random.sample(possible_zero_width_chars, len(bin_list))
     for b in bin_text:
         encoded_text += char_list[bin_list.index(b)]
-	print("Encoded Text is:", encoded_text)   
-        return encoded_text
+    print("Encoded Text is:", encoded_text)   
+    return encoded_text
 #Decode the stego text when the user enters it. This should be stored in the variable stego_text
 def decode(stego_text):
 	bin_text = ""
