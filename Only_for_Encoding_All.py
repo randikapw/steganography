@@ -27,8 +27,8 @@ possible_zero_width_chars = [
 ]
 
 bin_list = [" ","0","1"]
-# char_list = ["\u2060", "\u200B", "\u200C"]
-char_list = ["A", "B", "C"]
+char_list = ["\u2060", "\u200B", "\u200C"]
+#char_list = ["A", "B", "C"]
 key = get_random_bytes(32)
 
 # Detect cover text as Sinhala
@@ -62,7 +62,8 @@ def encrypt_and_hash_secret_message(secret_text):
     
     # Base64 encode the hashed secret for easier storage
     hashed_secret_base64 = base64.b64encode(hashed_secret).decode('utf-8')
-    
+    encrypted_secret = base64.b64encode(encrypted_secret).decode('utf-8')
+
     return encrypted_secret, hashed_secret_base64, key
     # return hashed_secret_base64
 
@@ -114,18 +115,19 @@ def main():
             continue 
     secret_text = input("Enter the secret message to hide: ")
     encrypted_secret, hashed_secret_base64, key = encrypt_and_hash_secret_message(secret_text)
+    print("encrypted secret: ", encrypted_secret)
     steganographed_text = encode(encrypted_secret, open_text) 
         
   # Print the steganographed text
-    print("Steganographed text:", steganographed_text)
+    print("Steganographed text:", steganographed_text + "T")
         
 #Decoding
 #Input the stego text
-    print("Enter the steganographed text: ")
-    separator_index = steganographed_text.rfind("\u2063")
-    stego_text = steganographed_text[separator_index + 1:]
+    stego_text = input("Enter the steganographed text: ")
+    separator_index = stego_text.rfind("\u2063")
+    raw_secret = stego_text[separator_index + 1:]
     print("Stego Text:", stego_text) 
-    output_secret = decrypt_stego_text(decode(stego_text), key)
+    output_secret = decrypt_stego_text(decode(raw_secret), key)
 
 #Print the decoded and decrypted secret
     print("Decoded Secret: ", output_secret)
