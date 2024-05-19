@@ -1,7 +1,7 @@
-from Decode import *
-from Encode import *
+from Decode import decode
+from Encode import encode
 
-def isNeedToEncode():
+def is_need_to_encode():
     while True:
     # Ask the user to enter the cover text in Sinhala
         action = input("What do you want to do now? encode a text (E) or decode a text (D) ")
@@ -15,7 +15,7 @@ def isNeedToEncode():
 
 def main():
     print("Welcome to STEGA in සිංහල")
-    if isNeedToEncode():
+    if is_need_to_encode():
         encode()
         decode()
     

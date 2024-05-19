@@ -1,16 +1,8 @@
-from langdetect import detect_langs
-from langdetect.lang_detect_exception import LangDetectException
 import nltk
-import random
-from Crypto.Cipher import AES
-from Crypto.Util.Padding import pad, unpad
-from Crypto.Random import get_random_bytes
-import hashlib
-import base64
 nltk.download('punkt')
 
-from Cryptolocal import *
-from Config import *
+from Cryptolocal import decrypt_stego_text
+from Config import bin_list,char_list
 
 #Decode the stego text when the user enters it. This should be stored in the variable stego_text
 def decode():

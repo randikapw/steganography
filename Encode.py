@@ -1,17 +1,10 @@
-from langdetect import detect_langs
 from langdetect.lang_detect_exception import LangDetectException
 import nltk
-import random
-from Crypto.Cipher import AES
-from Crypto.Util.Padding import pad, unpad
-from Crypto.Random import get_random_bytes
-import hashlib
-import base64
 nltk.download('punkt')
 
-from Cryptolocal import *
-from Langcheck import *
-from Config import *
+from Cryptolocal import encrypt_and_hash_secret_message
+from Langcheck import detect_sinhala_text
+from Config import bin_list,char_list
 
 #Encode the encrypted secret text in the cover text
 def encode():
