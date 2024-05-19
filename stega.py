@@ -1,3 +1,5 @@
+from Decode import *
+from Encode import *
 
 def isNeedToEncode():
     while True:
@@ -13,7 +15,13 @@ def isNeedToEncode():
 
 def main():
     print("Welcome to STEGA in සිංහල")
-    if (isNeedToEncode) :
+    if isNeedToEncode():
+        encode()
+        decode()
     
     else:
+        decode()
+
+if __name__ == "__main__":
+  main()
     

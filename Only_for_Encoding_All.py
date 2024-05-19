@@ -29,7 +29,11 @@ possible_zero_width_chars = [
 bin_list = [" ","0","1"]
 char_list = ["\u2060", "\u200B", "\u200C"]
 #char_list = ["A", "B", "C"]
-key = get_random_bytes(32)
+#key = get_random_bytes(32)
+#key64= base64.b64encode(key).decode('utf-8') 
+key64 = "OazOWZVVVBamuaZ9BDkU8lImfu1Nhak0tySQ/zP+CJo="
+print("Key is: ", key64)
+key = base64.b64decode(key64)
 
 # Detect cover text as Sinhala
 def detect_sinhala_text(open_text, threshold=0.5):
