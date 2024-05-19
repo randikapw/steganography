@@ -120,10 +120,16 @@ def main():
         
   # Print the steganographed text
     print("Steganographed text:", steganographed_text + "T")
+    with open("steganographed_text.txt", "w") as file:
+        # Write the content of the variable to the file
+        file.write(steganographed_text)
         
 #Decoding
 #Input the stego text
-    stego_text = input("Enter the steganographed text: ")
+    stego_text = "" #input("Enter the steganographed text: ")
+    with open("steganographed_text.txt", "r") as file:
+    # Read the entire content of the file into a string
+        stego_text = file.read()
     separator_index = stego_text.rfind("\u2063")
     raw_secret = stego_text[separator_index + 1:]
     print("Stego Text:", stego_text) 
