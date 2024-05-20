@@ -15,7 +15,7 @@ possible_zero_width_chars = [
 ]
 
 bin_list = [" ","0","1"]
-#char_list = ["\u2060", "\u200B", "\u200C"]
-char_list = ["A", "B", "C"]
+char_list = ["\u2060", "\u200B", "\u200C"]
+#char_list = ["A", "B", "C"]
 
 

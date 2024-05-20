@@ -1,13 +1,11 @@
 from langdetect import detect_langs
 from langdetect.lang_detect_exception import LangDetectException
-import nltk
 import random
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import pad, unpad
 from Crypto.Random import get_random_bytes
 import hashlib
 import base64
-nltk.download('punkt')
 
 # Detect cover text as Sinhala
 def detect_sinhala_text(open_text, threshold=0.5):
