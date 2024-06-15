@@ -1,5 +1,4 @@
 from langdetect.lang_detect_exception import LangDetectException
-
 from Cryptolocal import encrypt_and_hash_secret_message
 from Langcheck import detect_sinhala_text
 from Config import bin_list,char_list

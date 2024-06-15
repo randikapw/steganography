@@ -10,7 +10,7 @@ def decodex(raw_secret):
     secret_text = ""
     for b in bin_val:
         secret_text += chr(int(b, 2))
-    print("Secret Text: ", secret_text)
+    #print("Secret Text: ", secret_text)
     return secret_text
 
 
