@@ -44,7 +44,7 @@ def encode():
     print()
 
     #Write the stego text and hash ID to two files
-    with open(file_path + ".txt", "w") as file:
+    with open(file_path + ".txt", "w", encoding="utf-8") as file:
         file.write(encoded_text)
     with open(file_path + ".h", "w") as hashfile:
         hashfile.write(hashed_secret_base64)

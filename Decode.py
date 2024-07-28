@@ -28,7 +28,7 @@ def decode():
 
     #Read the file and decrypt the secret
     try:
-        with open(file_path + ".txt", "r") as file:
+        with open(file_path + ".txt", "r", encoding="utf-8") as file:
             #Read the entire content of the file into a string
             stego_text = file.read()
         separator_index = stego_text.rfind("\u2063")
